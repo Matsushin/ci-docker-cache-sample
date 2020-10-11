@@ -36,7 +36,7 @@ jobs:
               docker save $(docker images | awk 'NR>=2 && ! /^<none>/{print $1}') -o ~/caches/images.tar
             fi
       - save_cache:
-          key: docker-{{ .Branch }}--{{ checksum ".circleci/config.yml" }}--{{ checksum "docker-compose.yml" }}-{{ checksum "dockerfiles/backend/Dockerfile.local" }}-{{ checksum "services.local.sh" }
+          key: docker-{{ .Branch }}-{{ checksum ".circleci/config.yml" }}-{{ checksum "docker-compose.yml" }}-{{ checksum "dockerfiles/backend/Dockerfile.local" }}-{{ checksum "services.local.sh" }}
           paths:
             - ~/caches/images.tar
       - run:
