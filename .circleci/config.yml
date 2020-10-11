@@ -28,7 +28,7 @@ jobs:
 
       - run:
           name: docker-compose build
-          command:
+          command: |
             if [ ! -f ~/caches/images.tar ]; then
               mkdir -p ~/caches
               docker-compose build
