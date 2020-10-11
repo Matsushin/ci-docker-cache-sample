@@ -40,6 +40,12 @@ jobs:
           paths:
             - ~/caches/images.tar
       - run:
+          name: docker load
+          command: |
+            if [[ -e ~/caches/images.tar ]]; then
+              docker load -i ~/caches/images.tar
+            fi
+      - run:
           name: docker-compose up
           command: docker-compose up -d
 
